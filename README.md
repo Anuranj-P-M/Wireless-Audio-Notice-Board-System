@@ -2,41 +2,40 @@
 
 ## Objective
 
-The **Wireless Audio Notice Board System** is an IoT-based real-time wireless public announcement system developed using **ESP32 microcontrollers** and a **Flutter mobile application**. The project eliminates the need for traditional wired public address systems by enabling live voice announcements over a Wi-Fi network. Audio can be transmitted either from an **INMP441 I2S MEMS microphone** connected to an ESP32 transmitter or directly from a **Flutter mobile application**, and played through ESP32-based receiver units connected to speakers via the **MAX98357A I2S amplifier**.
+The **Wireless Audio Notice Board System** is an IoT-based real-time wireless public announcement system developed using **ESP32 microcontrollers** and a **Flutter mobile application**. The system eliminates the need for traditional wired public address systems by enabling live voice announcements over a Wi-Fi network.
 
-The project demonstrates the implementation of embedded systems, wireless communication, and mobile application integration to build a scalable, low-cost, and low-latency audio broadcasting solution suitable for educational institutions, offices, hospitals, factories, and other public environments.
+Voice announcements can be transmitted using either an **INMP441 I2S MEMS microphone** connected to an ESP32 transmitter or directly from a **Flutter mobile application**. The audio is streamed wirelessly using the **UDP protocol** and reproduced through ESP32 receiver units connected to **MAX98357A I2S audio amplifiers** and speakers.
 
 ---
 
 ## Skills Learned
 
-* Embedded Systems Development using ESP32
-* ESP32 Wi-Fi Communication and Networking
-* Real-Time Audio Streaming using UDP
-* I2S Audio Interface Configuration
+* Embedded Systems Development
+* ESP32 Programming
 * Flutter Mobile Application Development
-* Audio Capture and Processing
-* Digital Audio Amplification
-* IoT System Architecture Design
-* Embedded C Programming
-* Hardware Integration and Circuit Design
-* Network Communication and Debugging
-* System Testing and Performance Optimization
+* Wi-Fi Communication
+* UDP Audio Streaming
+* I2S Digital Audio Interface
+* Embedded C/C++
+* IoT System Design
+* Hardware Integration
+* Real-Time Audio Processing
+* Wireless Communication
+* System Testing & Debugging
 
 ---
 
 ## Tools Used
 
-* **ESP32 DevKit V1** – Main processing unit
-* **Flutter** – Mobile application for wireless voice announcements
-* **Arduino IDE** – ESP32 firmware development
-* **Embedded C/C++** – ESP32 programming
-* **INMP441 MEMS Microphone** – Hardware audio input
-* **MAX98357A I2S DAC Amplifier** – Audio output
-* **I2S Communication Protocol** – Digital audio transfer
-* **UDP Protocol** – Low-latency audio streaming
-* **Wi-Fi Network** – Wireless communication
-* **Serial Monitor** – Debugging and Testing
+* ESP32 DevKit V1
+* Flutter
+* Arduino IDE
+* Embedded C/C++
+* INMP441 I2S MEMS Microphone
+* MAX98357A I2S Audio Amplifier
+* Wi-Fi Router
+* UDP Protocol
+* I2S Communication Protocol
 
 ---
 
@@ -48,152 +47,111 @@ Below are the key implementation stages of the Wireless Audio Notice Board Syste
 
 ## 1. System Architecture Design
 
-The project architecture was designed with a wireless transmitter, Wi-Fi communication network, and multiple receiver units. The system supports audio input from both an ESP32-connected MEMS microphone and a Flutter mobile application.
+The project architecture consists of an ESP32 transmitter, Wi-Fi communication network, ESP32 receiver, audio amplifier, and speaker. The system supports voice announcements from both an INMP441 microphone and a Flutter mobile application.
 
 **Ref 1: System Architecture**
 
-This diagram illustrates the complete architecture of the Wireless Audio Notice Board System, showing communication between the Flutter application, ESP32 transmitter, Wi-Fi router, receiver ESP32, amplifier, and speaker.
-
-```markdown
-![System%20Architecture.png](https://raw.githubusercontent.com/Anuranj-P-M/Wireless-Audio-Notice-Board-System/main/System%20Architecture.png)
-```
+![System Architecture](System%20Architecture.png)
 
 ---
 
 ## 2. Audio Capture
 
-Voice announcements are captured using either:
+Voice announcements can be captured using either:
 
 * INMP441 Digital MEMS Microphone connected to ESP32
 * Flutter Mobile Application acting as a wireless microphone
 
-The ESP32 processes incoming digital audio through the I2S interface before packetizing it for transmission.
+The ESP32 processes digital audio through the I2S interface before transmitting it over the network.
 
 **Ref 2: Audio Capture Workflow**
 
-```markdown
-![Audio Capture](images/audio_capture.png)
-```
+![Audio Capture](Audio%20Capture.png)
 
 ---
 
 ## 3. Wireless Audio Transmission
 
-The processed audio packets are transmitted over the local Wi-Fi network using the UDP protocol, providing low-latency communication between transmitter and receiver units.
+The processed audio packets are transmitted wirelessly over the local Wi-Fi network using the UDP protocol, ensuring low-latency communication.
 
-**Ref 3: Wireless Transmission Workflow**
+**Ref 3: Wireless Audio Transmission**
 
-```markdown
-![Wireless Transmission](images/wireless_transmission.png)
-```
+![Wireless Audio Transmission](Wireless%20Audio%20Transmission.png)
 
 ---
 
 ## 4. Audio Playback
 
-The receiver ESP32 continuously receives incoming UDP packets, reconstructs the audio stream, and sends it to the MAX98357A I2S Digital Amplifier, which drives the speaker.
+The receiver ESP32 reconstructs the received audio packets and sends them to the MAX98357A I2S amplifier, which drives the speaker for real-time playback.
 
 **Ref 4: Audio Output Workflow**
 
-```markdown
-![Audio Output](images/audio_output.png)
-```
+![Audio Output](Audio%20Output.png)
 
 ---
 
-## 5. Flutter Mobile Application
+## 5. ESP32 Transmitter
 
-A cross-platform Flutter application was developed to function as a wireless microphone. Users can connect to the Wi-Fi network, select a receiver, and broadcast live announcements directly from their smartphones.
+The transmitter module captures voice input from the INMP441 microphone, processes it, and streams the audio wirelessly.
+
+**Ref 5: ESP32 Transmitter**
+
+![ESP32 Transmitter](esp32_mic.png)
+
+---
+
+## 6. ESP32 Receiver
+
+The receiver module listens for incoming UDP packets, reconstructs the audio stream, and outputs the audio through the amplifier and speaker.
+
+**Ref 6: ESP32 Receiver**
+
+![ESP32 Receiver](esp32_receiver.png)
+
+---
+
+## 7. Flutter Mobile Application
+
+A Flutter application was developed to function as a wireless microphone, allowing users to broadcast announcements directly from their smartphones.
 
 ### Features
 
 * Live Voice Streaming
-* Wireless Announcement Transmission
-* ESP32 Receiver Selection
-* Low Latency Audio
+* Push-to-Talk
+* Low-Latency Audio
+* Wi-Fi Connectivity
 * User-Friendly Interface
 
-**Ref 5: Flutter Application**
+> **Replace the image below with a screenshot of your Flutter application.**
 
 ```markdown
-![Flutter App](images/flutter_app.png)
-```
-
----
-
-## 6. Hardware Integration
-
-The hardware setup consists of:
-
-* ESP32 Transmitter
-* ESP32 Receiver
-* INMP441 MEMS Microphone
-* MAX98357A I2S Amplifier
-* Speaker
-* Wi-Fi Router
-* Power Supply
-
-The transmitter captures and streams audio, while the receiver reproduces the announcements in real time.
-
-**Ref 6: Hardware Setup**
-
-```markdown
-![Hardware Setup](images/hardware_setup.png)
-```
-
----
-
-## 7. System Testing
-
-The system was tested for:
-
-* Audio Clarity
-* Wi-Fi Stability
-* Transmission Latency
-* Packet Loss
-* Speaker Output Quality
-
-### Results
-
-* Clear real-time audio transmission
-* Stable UDP communication
-* Minimal transmission delay
-* Reliable Wi-Fi connectivity
-* High-quality speaker output
-
-**Ref 7: Testing Results**
-
-```markdown
-![Testing](images/testing_results.png)
+![Flutter Application](flutter_app.png)
 ```
 
 ---
 
 ## Future Enhancements
 
-* Multi-room broadcasting
-* Broadcast groups and zone selection
-* Audio recording and scheduled announcements
-* Secure encrypted audio streaming
-* Cloud-based announcement management
-* AI-powered noise suppression
-* Mesh networking for extended coverage
-* Battery-powered receiver units
-* Push-to-Talk functionality
-* Announcement history and playback
+* Multi-room Broadcasting
+* Zone-Based Announcements
+* Audio Recording
+* Announcement Scheduling
+* Secure Encrypted Streaming
+* Cloud Connectivity
+* AI Noise Suppression
+* Mesh Networking Support
 
 ---
 
 ## Applications
 
 * Schools and Colleges
-* Universities
-* Hospitals
 * Offices
+* Hospitals
+* Factories
+* Shopping Malls
 * Railway Stations
 * Airports
-* Shopping Malls
-* Factories
 * Smart Buildings
 * Government Institutions
 
@@ -201,12 +159,10 @@ The system was tested for:
 
 ## Project Highlights
 
-* Real-time wireless voice announcement system
-* Dual audio input (Flutter App + INMP441 Microphone)
-* ESP32-based embedded architecture
-* Low-latency UDP audio streaming
-* Digital audio using I2S protocol
-* Cost-effective and scalable design
-* Modular hardware architecture
-* Mobile-controlled public announcement system
-* Suitable for IoT and Smart Campus applications
+* Real-time Wireless Audio Streaming
+* Dual Audio Input (Flutter + INMP441 Microphone)
+* ESP32-Based Embedded System
+* Low-Latency UDP Communication
+* I2S Digital Audio Processing
+* Mobile-Controlled Announcements
+* Cost-Effective and Scalable Architecture
