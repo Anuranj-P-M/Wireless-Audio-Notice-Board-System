@@ -55,7 +55,7 @@ The project architecture was designed with a wireless transmitter, Wi-Fi communi
 This diagram illustrates the complete architecture of the Wireless Audio Notice Board System, showing communication between the Flutter application, ESP32 transmitter, Wi-Fi router, receiver ESP32, amplifier, and speaker.
 
 ```markdown
-![System Architecture](https://github.com/Anuranj-P-M/Wireless-Audio-Notice-Board-System/blob/main/System%20Architecture.png)
+![System Architecture](System%20Architecture.png)
 ```
 
 ---
