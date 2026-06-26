@@ -124,9 +124,6 @@ A Flutter application was developed to function as a wireless microphone, allowi
 
 > **Replace the image below with a screenshot of your Flutter application.**
 
-```markdown
-![Flutter Application](flutter_app.png)
-```
 
 ---
 
